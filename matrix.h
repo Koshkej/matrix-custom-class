@@ -18,6 +18,13 @@ public:
 	void set_dimension(int rows, int collum) {
 		dimension_x = collum;
 		dimension_y = rows;
+		for (int y = 0; y < dimension_y; y++) {
+			std::vector<float> matrix_buf;
+			for (int x = 0; x < dimension_x; x++) {
+				matrix_buf.push_back(0.0);
+			}
+			structure.push_back(std::vector<float>(matrix_buf));
+		}
 	}
 
 	void randomize(float MIN = -1, float MAX = 1) {
@@ -31,7 +38,7 @@ public:
 		}
 
 	}
-
+	
 	matrix operator*(matrix matrix_duo) {
 
 		matrix composition;
