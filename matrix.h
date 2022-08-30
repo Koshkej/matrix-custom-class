@@ -1,3 +1,5 @@
+// Vesrsion 0.01
+
 #define MATRIX_h
 #ifdef MATRIX_h
 
@@ -15,6 +17,8 @@ public:
 
 	std::vector<std::vector<float>> structure;
 
+	///
+	
 	void set_dimension(int rows, int collum) {
 		dimension_x = collum;
 		dimension_y = rows;
@@ -26,18 +30,8 @@ public:
 			structure.push_back(std::vector<float>(matrix_buf));
 		}
 	}
-
-	void randomize(float MIN = -1, float MAX = 1) {
-
-		for (int y = 0; y < dimension_y; y++) {
-			std::vector<float> matrix_buf;
-			for (int x = 0; x < dimension_x; x++) {
-				matrix_buf.push_back(MIN + (rand() / (float)RAND_MAX) * (MAX - MIN));
-			}
-			structure.push_back(std::vector<float>(matrix_buf));
-		}
-
-	}
+	
+	///
 	
 	matrix operator*(matrix matrix_duo) {
 
@@ -58,6 +52,8 @@ public:
 		return composition;
 	}
 
+	///
+	
 	matrix operator*(std::vector<std::vector<float>> structure_duo) {
 		
 		matrix composition;
@@ -73,6 +69,8 @@ public:
 		return composition;
 	}
 
+	///
+	
 	matrix operator-(const matrix deductible) {
 
 		matrix quotient;
@@ -87,6 +85,8 @@ public:
 		return quotient;
 	}
 
+	///
+	
 	matrix operator+(const matrix matrix_duo) {
 
 		matrix sum;
@@ -101,6 +101,8 @@ public:
 		return sum;
 	}
 
+	///
+	
 	matrix T() {
 		matrix transposing;
 		for (int point = 0; point < structure[0].size(); point++) {
@@ -113,6 +115,8 @@ public:
 		return transposing;
 	}
 
+	///
+	
 	matrix operator*(float scala) {
 
 		matrix composition;
@@ -128,6 +132,8 @@ public:
 		return composition;
 	}
 
+	///
+	
 	matrix operator+(float scala) {
 
 		matrix composition;
@@ -143,6 +149,8 @@ public:
 		return composition;
 	}
 
+	///
+	
 	matrix operator-(float scala) {
 
 		matrix composition;
@@ -158,6 +166,8 @@ public:
 		return composition;
 	}
 
+	///
+	
 	void operator*=(float scala) {
 		for (int line = 0; line < structure.size(); line++) {
 			for (int collum = 0; collum < structure[line].size(); collum++) {
@@ -166,6 +176,8 @@ public:
 		}
 	}
 
+	///
+	
 	void operator+=(float scala) {
 		for (int line = 0; line < structure.size(); line++) {
 			for (int collum = 0; collum < structure[line].size(); collum++) {
@@ -174,6 +186,8 @@ public:
 		}
 	}
 
+	///
+	
 	void operator-=(float scala) {
 		for (int line = 0; line < structure.size(); line++) {
 			for (int collum = 0; collum < structure[line].size(); collum++) {
@@ -182,6 +196,8 @@ public:
 		}
 	}
 
+	///
+	
 	void operator+=(const matrix matrix_duo) {
 		for (int line = 0; line < structure.size(); line++) {
 			for (int point = 0; point < structure[line].size(); point++) {
@@ -190,6 +206,8 @@ public:
 		}
 	}
 
+	///
+	
 	void operator*=(const matrix matrix_duo) {
 		for (int line = 0; line < structure.size(); line++) {
 			for (int collum = 0; collum < matrix_duo.structure[0].size(); collum++) {
@@ -200,6 +218,8 @@ public:
 		}
 	}
 
+	///
+	
 	void operator-=(const matrix matrix_duo) {
 		for (int line = 0; line < structure.size(); line++) {
 			for (int point = 0; point < structure[line].size(); point++) {
@@ -208,38 +228,53 @@ public:
 		}
 	}
 
-	void do_something(std::function<float(float)> function) {
+	///
+	
+//	void do_something(std::function<float(float)> function) {
+//		for (int line = 0; line < structure.size(); line++) {
+//			for (int collum = 0; collum < structure[line].size(); collum++) {
+//				structure[line][collum] = function(structure[line][collum]);
+//			}
+//		}
+//	}
 
-		for (int line = 0; line < structure.size(); line++) {
-			for (int collum = 0; collum < structure[line].size(); collum++) {
-				structure[line][collum] = function(structure[line][collum]);
-			}
-		}
+	///
+	
+//	matrix do_something_create(std::function<float(float)> function) {
+//		matrix result;
+//		for (int line = 0; line < structure.size(); line++) {
+//			std::vector<float> part;
+//			for (int collum = 0; collum < structure[line].size(); collum++) {
+//				part.push_back(function(structure[line][collum]));
+//			}
+//			result.structure.push_back(part);
+//		}
+//		return result;
+//	}
+	
+	///
+	
+//	void randomize(float MIN = -1, float MAX = 1) {
+//
+//		for (int y = 0; y < dimension_y; y++) {
+//			std::vector<float> matrix_buf;
+//			for (int x = 0; x < dimension_x; x++) {
+//				matrix_buf.push_back(MIN + (rand() / (float)RAND_MAX) * (MAX - MIN));
+//			}
+//			structure.push_back(std::vector<float>(matrix_buf));
+//		}
+//	}
 
-	}
+	///
+	
+//	void consoling() {
+//		for (int i = 0; i < structure.size(); i++) {
+//			for (int u = 0; u < structure[i].size(); u++) {
+//				std::cout << structure[i][u] << " ";
+//			}
+//		}
+//	}
 
-	matrix do_something_create(std::function<float(float)> function) {
-		matrix result;
-		for (int line = 0; line < structure.size(); line++) {
-			std::vector<float> part;
-			for (int collum = 0; collum < structure[line].size(); collum++) {
-				part.push_back(function(structure[line][collum]));
-			}
-			result.structure.push_back(part);
-		}
-		return result;
-	}
-
-	void consoling() {
-		std::cout << std::endl;
-		for (int i = 0; i < structure.size(); i++) {
-			for (int u = 0; u < structure[i].size(); u++) {
-				std::cout << structure[i][u] << " ";
-			}
-			std::cout << std::endl;
-		}
-		std::cout << std::endl;
-	}
 };
 
 #endif // matrix_h
