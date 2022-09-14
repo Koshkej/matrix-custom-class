@@ -1,0 +1,15 @@
+.timetableCreater {
+    margin: 0 auto;
+    width: 700px;
+    height: 450px;
+
+    border: 1px solid black;
+}
+
+.header {
+    
+}
+
+.text {
+    text-align: justify;
+}
